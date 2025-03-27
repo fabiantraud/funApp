@@ -1,0 +1,122 @@
+<html lang="de" class="myApp">
+    <style>
+        .myApp, .myApp body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background-color: rgba(156, 255, 222, 0.295);
+        }
+        
+
+        .Witze-Knopf {
+  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.897);
+  border: 3px solid black;
+  width: 350px;
+  height: 65px;
+  margin-top: 530px;
+  font-size: 25px;
+  font-family: "Lucida Handwriting", monospace; 
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow:0 7px rgb(0, 0, 0);
+
+ 
+  
+
+}
+
+.Witze-Knopf:hover {
+  background-color: rgb(238, 238, 238);
+}
+.Witze-Knopf:active {
+    box-shadow:0 4px black ;
+    margin-top: 540px;
+
+}       
+    .Knopf-Div {
+        text-align: center;
+    }
+    .Witze-Div { 
+    text-align: center;      
+    font-size: 50px;
+    max-width: 100%;
+    top: 400px;
+    position: relative;
+    font-family: "Lucida Handwriting", monospace;
+    
+}
+   
+    .Kategorien {
+        font-size: 30px;
+        font-family:  "Lucida Handwriting", monospace;
+        text-align: center;
+        position: relative;
+        top: 20px;
+    }    
+    .Flachwitze {
+        font-size: 40px;
+        font-family:  "Lucida Handwriting", monospace;
+        text-align: center;
+        position: relative;
+        top: 70px;
+    }
+
+    
+            
+    
+    
+
+
+    </style>
+    <head>
+        <title>Witze</title>
+        <link rel="icon" type="image/png" href="1200x630bb.png" />
+    </head>
+    <body>
+        <div class="Kategorien">Kategorien</div>
+        <div class="Flachwitze">Flachwitze</div>
+        <div id="div1" class="Witze-Div">
+            Drücken auf eigene Gefahr!
+        </div>
+     
+        
+        <div class="Knopf-Div">
+        <button class="Witze-Knopf" id="witzeButton">Bitte Witz</button>
+    </div>
+
+
+
+
+         
+    </body>
+
+
+
+    <script>
+        const myDiv = document.getElementById("div1");
+        const witzeButton = document.getElementById("witzeButton");
+        witzeButton.addEventListener("click",   async () => { const response = await fetch("https://witzapi.de/api/joke/?limit=1&category=flachwitze&language=de")
+        const latestJoke = await response.json();
+        console.log(latestJoke[0])
+        const witztext=latestJoke[0].text
+        myDiv.innerHTML = witztext
+        
+        //myDiv.innerHTML = latestJoke[0];
+        })
+
+
+        
+        
+
+        
+//myDiv.innerHTML = latestJoke;       
+            
+            
+
+
+        
+       
+       
+    </script>
+</html><html lang="de" class="myApp">
