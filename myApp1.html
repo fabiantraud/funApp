@@ -1,0 +1,569 @@
+<html lang="de" class="myApp">
+    <style>
+.myApp, .myApp body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #9cffde;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.Witze-Knopf {
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.897);
+    border: 3px solid black;
+    width: 20.97%;
+    height: 6.81%;
+    top: 70%;
+    font-size: 1.9vw;
+    font-family: "Winky Sans", sans-serif;
+    cursor: pointer;
+    border-radius:25px;;
+    box-shadow: 0 0.27vw rgb(0, 0, 0);
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.Witze-Knopf:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Witze-Knopf:active {
+    box-shadow: 0 0.16vw black;
+    top: 70.5%;
+}
+
+.Knopf-Div {
+    text-align: center;
+}
+
+.Witze-Div {
+    text-align: center;
+    font-size: 2.40vw;
+    max-width: 100%;
+    top: 27%;
+    position: relative;
+    font-family: "Winky Sans", sans-serif;
+    padding-left: 4.86vw;
+    padding-right: 4.86vw;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.Kategorien {
+    font-size: 2.21vw;
+    font-family: "Winky Sans", sans-serif;
+    text-align: center;
+    position: relative;
+    top: 1.55%;
+    z-index: 1000;
+}
+
+.Flachwitze {
+    font-size: 2.56vw;
+    font-family: "Winky Sans", sans-serif;
+    text-align: center;
+    top: 7%;
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+    border-radius: 25px;;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.Flachwitze:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Flachwitze:active {
+    box-shadow: 0 0.16vw black;
+    top: 7.5%;
+}
+
+.hinzu {
+    font-size: 2.56vw;
+    font-family: "Winky Sans", sans-serif;
+    left: 10%;
+    position: absolute;
+    top: 7%;
+    background-color: white;
+    cursor: pointer;
+    z-index: 10000px;
+    border-radius: 25px;;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.hinzu:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.hinzu:active {
+    top: 7.5%;
+    box-shadow: 0 0.16vw black;
+}
+
+dialog {
+    width: 35.16%;
+    height: 31.25%;
+    padding: 1.39vw;
+    border-radius: 0.39vw;
+    background-color: white;
+    border: 2px solid black;
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+.dialog-close {
+    text-align: center;
+    position: fixed;
+    top: 1.39vw;
+    right: 0.51vw;
+    cursor: pointer;
+    font-size: 2.78vw;
+    font-family: "Winky Sans", sans-serif;
+    border: 0.12vw solid black;
+    box-shadow: 0 0.16vw rgb(0, 0, 0);
+    border-radius: 25px;;
+    width: 1.56vw;
+}
+
+.dialog-content {
+    margin-top: 2.78vw;
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content select, .dialog-content input {
+    width: 100%;
+    padding: 2.08vw;
+    margin: 0.69vw 0;
+    font-size: 2.08vw;
+    border: 0.12vw solid #ccc;
+    border-radius: 25px;;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content button {
+    padding: 2.08vw 3.12vw;
+    top: 70%;
+    font-size: 2.08vw;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 0.12vw solid black;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content button:hover {
+    background-color: #cacaca;
+}
+
+.Fav {
+    z-index: 10000px;
+    height: 5%;
+    width: 2.5%;
+    position: absolute;
+    left: 80%;
+    top: 25%;
+    cursor: pointer;
+    border-radius:25px;;
+    box-shadow: 0 0.30vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.Fav img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Fav:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Fav:active {
+    box-shadow: 0 0.16vw black;
+    top: 25.5%;
+}
+
+.Favoriten {
+    z-index: 10000px;
+    position: absolute;
+    font-size: 2.56vw;
+    right: 14%;
+    top: 7%;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+    font-family: "Winky Sans", sans-serif;
+    box-sizing: border-box;
+
+
+}
+
+.Favoriten:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Favoriten:active {
+    top: 7.5%;
+    box-shadow: 0 0.16vw black;
+}
+
+.Test10 {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid black;
+    position: absolute;
+    top: 400px;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    box-shadow:3px 3px 10px rgb(0, 0, 0);
+}
+
+.dia-close {
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    right: 13px;
+    cursor: pointer;
+    font-size: 40px;
+    font-family: "Winky Sans", sans-serif;
+    border: 3px solid black;
+    box-shadow: 0 4px rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 40px;
+}
+
+.dia-close:active {
+    top: 23px;
+    box-shadow: 0 2px rgb(0, 0, 0);
+}
+
+.Überschrift {
+    position: absolute;
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+.Favoinhalt {
+    position: absolute;
+    top: 12%;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 20px;
+    max-width: 780px;
+}
+
+.delete {
+    z-index: 10000px;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 7px rgb(0, 0, 0);
+    border: 3px solid black;
+    left: 800px;
+    background-color: rgb(221, 121, 121);
+}
+
+.delete:hover {
+    background-color: rgb(194, 115, 115);
+}
+
+.delete:active {
+    top:5px;
+    box-shadow: 0 4px rgb(0, 0, 0);
+}
+
+.delete img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Geheim {
+    opacity: 0%;
+    cursor: pointer;
+    height: 5.88%;
+    width: 5.88%;
+    position: absolute;
+    right: 0;
+    top: 85%;
+}
+
+#Fav {
+    visibility: visible;
+}
+
+.witzein {
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 1.56vw;
+}
+
+.Katege {
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 1.56vw;
+}
+
+.tes {
+    left: 80%;
+    top: 25%;
+    position: absolute;
+}
+
+.tes img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.te {
+    bottom: 25%;
+}
+
+.te img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+    </style>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <title>Witze</title>
+        <link rel="icon" type="image/png" href="logo1.png" />
+    </head>
+    <body>
+        <div class="Kategorien">Kategorie</div>
+
+        <button class="Flachwitze" id="Flachwitzeid">Flachwitze</button>
+        <button class="Favoriten" id="Favoriten">Favoriten</button>
+        <dialog id="Favo" class="Test10">
+            <button class="delete" id="delete"><img src="542724.png"></button>
+            <span class="dia-close" id="close-dia">X</span>
+            <h1 class="Überschrift">Favoriten</h1>
+            <br>
+            <div class="Favoinhalt" id="Favoinhalt">Test</div>
+        </dialog>
+        <button class="Fav" id="Fav"><img src="2267.png" id="herz_0"></button>
+        
+        <dialog id="dialog">
+            <span class="dialog-close" id="close-dialog">X</span>
+            <div class="dialog-content">
+               <!--   <button class="tes"><img src="2033152_eb.png" id="tes"></button>
+                <button class="te"><img src="coming_soon.png"></button> -->
+                <label for="category" class="Katege">Kategorie:</label>
+                <select id="category">
+                    <option value="flachwitze">Flachwitze</option>
+                    <option value="lehrerwitze">Lehrerwitze</option>
+                    <option value="scherzfragen">Scherzfragen</option>
+                    <option value="chuck-norris-witze">Chuck-Norris-Witze</option>
+                    <option value="blondinenwitze">Blondinenwitze</option>
+                </select>
+                <label for="jokeText" class="witzein">bitte Witz hinzufügen:</label>
+                <input type="text" id="jokeText" placeholder="Bitte Witz hier schreiben">
+                <button id="submit-joke">Witz hinzufügen</button>
+            </div>
+        </dialog>
+        <button class="Hinzu" id="Hinzu">Witz hinzufügen</button>
+        <a href="TestTest.html" class="Geheim">Geheim</a>
+        <div id="div1" class="Witze-Div">
+            Drücken auf eigene Gefahr!
+        </div>
+
+        <div class="Knopf-Div">
+            <button class="Witze-Knopf" id="witzeButton" tabindex="0">Bitte Witz</button>
+        </div>
+    </body>
+
+    <script>
+        const Favoinhalt = document.getElementById("Favoinhalt");
+        const Kategorien = ["Flachwitze", "Lehrerwitze", "Scherzfragen", "Chuck-Norris-Witze", "Blondinenwitze"];
+        const Test4 = document.getElementById("Flachwitzeid");
+        Test4.innerHTML = Kategorien[0];
+        let addedJokes = JSON.parse(localStorage.getItem("addedJokes")) || [];
+        let jokeCounter = 0;
+        const maxRandomJokes = 5;
+
+        function changeBackgroundColor(Kategorie) {
+            switch (Kategorie.toLowerCase()) {
+                case "flachwitze":
+                    document.body.style.backgroundColor = "#9cffde";
+                    break;
+                case "lehrerwitze":
+                    document.body.style.backgroundColor = "#B3D9FF";
+                    break;
+                case "scherzfragen":
+                    document.body.style.backgroundColor = "#B3FFB3";
+                    break;
+                case "chuck-norris-witze":
+                    document.body.style.backgroundColor = "#FFD966";
+                    break;
+                case "blondinenwitze":
+                    document.body.style.backgroundColor = "#FFB3D9";
+                    break;
+                default:
+                    document.body.style.backgroundColor = "#FFFFFF";
+            }
+        }
+
+        Test4.addEventListener("click", async () => {
+            const Kategorie1 = Kategorien.shift();
+            Kategorien.push(Kategorie1);
+            const Kategorienow = Kategorien[0];
+            Test4.innerHTML = Kategorienow;
+            changeBackgroundColor(Kategorienow);
+        });
+    
+        
+
+       
+       
+       
+        const myDiv = document.getElementById("div1");
+        const witzeButton = document.getElementById("witzeButton");
+        let witztext = "";
+        const bild = document.getElementById("herz_0");
+
+        function hideFav() {
+    document.getElementById("Fav").style.visibility = "hidden";
+}
+function showFav() {
+    document.getElementById("Fav").style.visibility = "visible";
+}
+hideFav();
+
+
+        witzeButton.addEventListener("click", async () => {
+            const aktuelleKategorie = Test4.innerHTML.toLowerCase();
+            const url = `https://witzapi.de/api/joke/?limit=1&category=${aktuelleKategorie}&language=de`;
+            const response = await fetch(url);
+            const latestJoke = await response.json();
+            witztext = latestJoke[0].text;
+            console.log(witztext)
+            myDiv.innerHTML = witztext;
+
+            if (!witztext || witztext.trim() === "") {
+        hideFav();
+    } else {
+        showFav(); }
+
+            if (Favoriten.includes(witztext)) {
+                bild.src = "22672.png";
+            } else {
+                bild.src = "2267.png";
+            }
+
+        });
+        
+        const dialog = document.getElementById("dialog");
+        const hinzufuegenButton = document.getElementById("Hinzu");
+        const closeDialogButton = document.getElementById("close-dialog");
+
+        hinzufuegenButton.addEventListener("click", () => {
+            dialog.showModal();
+        });
+
+        closeDialogButton.addEventListener("click", () => {
+            dialog.close();
+        });
+
+        const submitButton = document.getElementById("submit-joke");
+
+        submitButton.addEventListener("click", () => {
+            const category = document.getElementById("category").value;
+            const jokeText = document.getElementById("jokeText").value;
+            if (jokeText.trim()) {
+                dialog.close();
+            } else {
+                alert("Bitte einen Witz eingeben");
+            }
+        });
+
+        let Favoriten = JSON.parse(localStorage.getItem("Favoriten")) || [];
+        const Fav = document.getElementById("Fav");
+        const dia = document.getElementById("close-dia");
+
+        Fav.addEventListener("click", () => {
+            const Favorit = witztext;
+            const Favoritending = Favoriten.indexOf(Favorit);
+           
+            
+
+            if (Favoritending === -1) {
+                Favoriten.push(Favorit);
+                bild.src = "22672.png";
+            }  
+            else {
+                Favoriten.splice(Favoritending, 1);
+                bild.src = "2267.png";
+            }
+
+
+            localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+    updateFavoritesDisplay();
+        });
+        function updateFavoritesDisplay() {
+            Favoinhalt.innerHTML = Favoriten.join("<br><br>");
+            }
+
+        const Favo = document.getElementById("Favo");
+        const FavoButton = document.getElementById("Favoriten");
+
+        FavoButton.addEventListener("click", () => {
+            Favo.showModal();
+        });
+
+        dia.addEventListener("click", () => {
+            Favo.close();
+        });
+
+        Favoinhalt.innerHTML = Favoriten.join("<br><br>");
+        const deleteknopf=document.getElementById("delete")
+        deleteknopf.addEventListener("click", ()=> {
+            Favoriten= [];
+            localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+            updateFavoritesDisplay();
+
+        })
+       
+
+
+
+
+
+
+    </script>
+</html>
