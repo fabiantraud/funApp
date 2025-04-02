@@ -1,0 +1,730 @@
+<html lang="de" class="myApp">
+    <style>
+.myApp, .myApp body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #9cffde;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.Witze-Knopf {
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.897);
+    border: 3px solid black;
+    width: 20.97%;
+    height: 6.81%;
+    top: 70%;
+    font-size: 1.9vw;
+    font-family: "Winky Sans", sans-serif;
+    cursor: pointer;
+    border-radius:25px;;
+    box-shadow: 0 0.36vw rgb(0, 0, 0);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    max-width: 21%;
+    min-width: 20.97%;
+
+}
+
+.Witze-Knopf:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Witze-Knopf:active {
+    box-shadow: 0 0.16vw black;
+    top: 70.5%;
+}
+
+.Knopf-Div {
+    text-align: center;
+}
+
+.Witze-Div {
+    text-align: center;
+    font-size: 2.40vw;
+    max-width: 100%;
+    top: 34%;
+    position: relative;
+    font-family: "Winky Sans", sans-serif;
+    padding-left: 4.86vw;
+    padding-right: 4.86vw;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.Kategorien {
+    font-size: 2.21vw;
+    font-family: "Winky Sans", sans-serif;
+    text-align: center;
+    position: absolute;
+    top: 1.55%;
+    z-index: 1000;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.Flachwitze {
+    font-size: 2.56vw;
+    font-family: "Winky Sans", sans-serif;
+    text-align: center;
+    top: 7%;
+    background-color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+    border-radius: 25px;;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.Flachwitze:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Flachwitze:active {
+    box-shadow: 0 0.16vw black;
+    top: 7.5%;
+}
+
+.hinzu {
+    font-size: 2.56vw;
+    font-family: "Winky Sans", sans-serif;
+    left: 10%;
+    position: absolute;
+    top: 7%;
+    background-color: white;
+    cursor: pointer;
+    z-index: 10000px;
+    border-radius: 25px;;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.hinzu:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.hinzu:active {
+    top: 7.5%;
+    box-shadow: 0 0.16vw black;
+}
+
+dialog {
+    width: 900px;
+    height: 450px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid black;
+    position: fixed;
+    top: 25%;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+.dialog-close {
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    right: 13px;
+    cursor: pointer;
+    font-size: 40px;
+    font-family: "Winky Sans", sans-serif;
+    border: 3px solid black;
+    box-shadow: 0 4px rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 40px;
+}
+
+.dialog-content {
+    margin-top: 40px;
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content select, .dialog-content input {
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    font-size: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content button {
+    padding: 20px 30px;
+    top: 70%;
+    font-size: 30px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 3;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: "Winky Sans", sans-serif;
+}
+
+.dialog-content button:hover {
+    background-color: #cacaca;
+}
+
+.Fav {
+    z-index: 10000px;
+    height: 5%;
+    width: 2.5%;
+    position: absolute;
+    left: 80%;
+    top: 25%;
+    cursor: pointer;
+    border-radius:25px;;
+    box-shadow: 0 0.30vw rgb(0, 0, 0);
+    border: 4px solid black;
+}
+
+.Fav img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.Fav:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Fav:active {
+    box-shadow: 0 0.16vw black;
+    top: 25.5%;
+}
+
+.Favoriten {
+    z-index: 10000px;
+    position: absolute;
+    font-size: 2.56vw;
+    right: 14%;
+    top: 7%;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 0.38vw rgb(0, 0, 0);
+    border: 4px solid black;
+    font-family: "Winky Sans", sans-serif;
+    box-sizing: border-box;
+
+
+}
+
+.Favoriten:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.Favoriten:active {
+    top: 7.5%;
+    box-shadow: 0 0.16vw black;
+}
+
+.Test10 {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid black;
+    position: absolute;
+    top: 400px;
+    left: 37%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    box-shadow:3px 3px 10px rgb(0, 0, 0);
+}
+
+.dia-close {
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    right: 13px;
+    cursor: pointer;
+    font-size: 40px;
+    font-family: "Winky Sans", sans-serif;
+    border: 3px solid black;
+    box-shadow: 0 4px rgb(0, 0, 0);
+    border-radius: 15px;
+    width: 40px;
+}
+
+.dia-close:active {
+    top: 23px;
+    box-shadow: 0 2px rgb(0, 0, 0);
+}
+
+.Überschrift {
+    position: absolute;
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+}
+
+.Favoinhalt {
+    position: absolute;
+    top: 12%;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 20px;
+    max-width: 780px;
+}
+
+.delete {
+    z-index: 10000px;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 7px rgb(0, 0, 0);
+    border: 3px solid black;
+    left: 800px;
+    background-color: rgb(221, 121, 121);
+}
+
+.delete:hover {
+    background-color: rgb(194, 115, 115);
+}
+
+.delete:active {
+    top:5px;
+    box-shadow: 0 4px rgb(0, 0, 0);
+}
+
+.delete img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.TestG {
+    opacity: 0%;
+    cursor: pointer;
+    height: 5.88%;
+    width: 5.88%;
+    position: absolute;
+    right: 0;
+    top: 85%;
+}
+
+#Fav {
+    visibility: visible;
+}
+
+.witzein {
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 1.56vw;
+}
+
+.Katege {
+    text-align: center;
+    font-family: "Winky Sans", sans-serif;
+    font-size: 1.56vw;
+}
+
+.tes {
+    left: 80%;
+    top: 25%;
+    position: absolute;
+}
+
+.tes img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.te {
+    bottom: 25%;
+}
+
+.te img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+#flex {
+    display: flex; 
+    justify-content: space-around;
+}
+
+
+
+    </style>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <title>Witze</title>
+        <link rel="icon" type="image/png" href="logo1.png" />
+    </head>
+    <body>
+        <div class="Kategorien">Kategorie</div>
+
+        <button class="Flachwitze" id="Kates" >Flachwitze</button>
+        <button class="Favoriten" id="Favoriten">Favoriten</button>
+        <dialog id="Favo" class="Test10">
+            <button class="delete" id="delete"><img src="542724.png"></button>
+            <span class="dia-close" id="close-dia">X</span>
+            <h1 class="Überschrift">Favoriten</h1>
+            <br>
+            <div class="Favoinhalt" id="Favoinhalt">Test</div>
+        </dialog>
+        <button class="Fav" id="Fav"><img src="2267.png" id="herz_0"></button>
+       
+        <dialog id="dialog">
+            <span class="dialog-close" id="close-dialog">X</span>
+            <div class="dialog-content">
+                 <button class="tes"><img src="2033152_eb.png" id="tes"></button>
+                <button class="te"><img src="coming_soon.png"></button> 
+                <label for="category" class="Katege">Kategorie:</label>
+                <select id="category">
+                    <option value="flachwitze">Flachwitze</option>
+                    <option value="lehrerwitze">Lehrerwitze</option>
+                    <option value="scherzfragen">Scherzfragen</option>
+                    <option value="chuck-norris-witze">Chuck-Norris-Witze</option>
+                    <option value="blondinenwitze">Blondinenwitze</option>
+                </select>
+                <label for="jokeText" class="witzein">bitte Witz hinzufügen:</label>
+                <input type="text" id="jokeText" placeholder="Bitte Witz hier schreiben">
+                <button id="submit-joke">Witz hinzufügen</button>
+            </div>
+        </dialog>
+        <button class="Hinzu" id="Hinzu" id="flex">Witz hinzufügen</button>
+        <a href="TestTest.html" class="TestG">testhgghvmvg</a>
+        <div id="div1" class="Witze-Div">
+            Drücken auf eigene Gefahr!
+        </div>
+
+        <div class="Knopf-Div">
+            <button class="Witze-Knopf" id="witzeButton" tabindex="0">Bitte Witz</button>
+        </div>
+    </body>
+
+    <script>
+        const Favoinhalt = document.getElementById("Favoinhalt");
+        /*const Kategorien = ["Flachwitze", "Lehrerwitze", "Scherzfragen", "Chuck-Norris-Witze", "Blondinenwitze"];
+      /*  const Test4 = document.getElementById("Flachwitzeid");*/
+      /*  Test4.innerHTML = Kategorien[0];*/
+        let addedJokes = JSON.parse(localStorage.getItem("addedJokes")) || [];
+        let jokeCounter = 0;
+        const maxRandomJokes = 5;
+
+       /* function changeBackgroundColor(Kategorie) {
+            switch (Kategorie.toLowerCase()) {
+                case "flachwitze":
+                    document.body.style.backgroundColor = "#9cffde";
+                    break;
+                case "lehrerwitze":
+                    document.body.style.backgroundColor = "#B3D9FF";
+                    break;
+                case "scherzfragen":
+                    document.body.style.backgroundColor = "#B3FFB3";
+                    break;
+                case "chuck-norris-witze":
+                    document.body.style.backgroundColor = "#FFD966";
+                    break;
+                case "blondinenwitze":
+                    document.body.style.backgroundColor = "#FFB3D9";
+                    break;
+                default:
+                    document.body.style.backgroundColor = "#FFFFFF";
+            }
+        }
+
+     /*   Test4.addEventListener("click", async () => {
+            const Kategorie1 = Kategorien.shift();
+            Kategorien.push(Kategorie1);
+            const Kategorienow = Kategorien[0];
+            Test4.innerHTML = Kategorienow;
+            changeBackgroundColor(Kategorienow);
+        });
+    */
+        
+
+       
+       
+       
+        const myDiv = document.getElementById("div1");
+        const witzeButton = document.getElementById("witzeButton");
+        let witztext = "";
+        const bild = document.getElementById("herz_0");
+
+        function hideFav() {
+    document.getElementById("Fav").style.visibility = "hidden";
+}
+function showFav() {
+    document.getElementById("Fav").style.visibility = "visible";
+}
+hideFav();
+let Kates = document.getElementById("Kates");
+let categories = [];
+let filteredCategories = [];
+let currentCategoryIndex = 0;
+
+async function loadCategories() {
+    try {
+        const Kats = await fetch("https://witzapi.de/api/category/?language=de");
+        const Kats2 = await Kats.json();
+        categories = Kats2.map(item => item.name);
+        filterCategories();
+    } catch (error) {
+        console.error("Fehler beim Laden der Kategorien:", error);
+    }
+}
+
+async function filterCategories() {
+    const tempFilteredCategories = [];
+    for (const category of categories) {
+        try {
+            const response = await fetch(`https://witzapi.de/api/joke/?limit=6&category=${category}&language=de`);
+            const jokeData = await response.json();
+            if (jokeData.length >= 6) {
+                tempFilteredCategories.push(category);
+            }
+        } catch (error) {
+            console.error(`Fehler beim Abrufen der Witze für die Kategorie ${category}:`, error);
+        }
+    }
+    filteredCategories = tempFilteredCategories;
+
+    if (filteredCategories.length > 0) {
+        const category = filteredCategories[currentCategoryIndex];
+        let formattedCategory = formatCategoryName(category);
+        Kates.innerHTML = formattedCategory; // Button-Text direkt setzen
+        changeBackgroundColor(category); // Hintergrundfarbe direkt ändern
+    }
+}
+
+function changeBackgroundColor(category) {
+    switch (category.toLowerCase()) {
+        case "flachwitze":
+            document.body.style.backgroundColor = "#9cffde";
+            break;
+        case "lehrerwitze":
+            document.body.style.backgroundColor = "#B3D9FF";
+            break;
+        case "scherzfragen":
+            document.body.style.backgroundColor = "#B3FFB3";
+            break;
+        case "chuck-norris-witze":
+            document.body.style.backgroundColor = "#FFD966";
+            break;
+        case "blondinenwitze":
+            document.body.style.backgroundColor = "#FFB3D9";
+            break;
+        default:
+            document.body.style.backgroundColor = "#FFFFFF";
+    }
+}
+
+Kates.addEventListener("click", () => {
+    if (filteredCategories.length === 0) {
+        Katsdiv.textContent = "Keine Kategorien mit mehr als 6 Witzen gefunden!";
+        return;
+    }
+
+    currentCategoryIndex++;
+
+    if (currentCategoryIndex >= filteredCategories.length) {
+        currentCategoryIndex = 0;
+    }
+
+    const category = filteredCategories[currentCategoryIndex];
+    let formattedCategory = formatCategoryName(category);
+    Kates.innerHTML = formattedCategory;
+    changeBackgroundColor(category);
+});
+
+function formatCategoryName(category) {
+    return category
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join('-');
+}
+
+loadCategories();
+
+
+
+  
+
+
+
+
+
+
+        witzeButton.addEventListener("click", async () => {
+            const aktuelleKategorie = Kates.innerHTML.toLowerCase();
+            const url = `https://witzapi.de/api/joke/?limit=1&category=${aktuelleKategorie}&language=de`;
+            const response = await fetch(url);
+            const latestJoke = await response.json();
+            witztext = latestJoke[0].text;
+            console.log(witztext)
+            myDiv.innerHTML = witztext;
+
+            if (!witztext || witztext.trim() === "") {
+        hideFav();
+    } else {
+        showFav(); }
+
+            if (Favoriten.includes(witztext)) {
+                bild.src = "22672.png";
+            } else {
+                bild.src = "2267.png";
+            }
+
+        });
+        
+        const dialog = document.getElementById("dialog");
+        const hinzufuegenButton = document.getElementById("Hinzu");
+        const closeDialogButton = document.getElementById("close-dialog");
+
+        hinzufuegenButton.addEventListener("click", () => {
+            dialog.showModal();
+        });
+
+        closeDialogButton.addEventListener("click", () => {
+            dialog.close();
+        });
+
+let category;
+let jokeText;
+let NutzerWitz
+
+const submitButton = document.getElementById("submit-joke");
+
+        submitButton.addEventListener("click",async () => {
+    let category = document.getElementById("category").value;
+    let jokeText = document.getElementById("jokeText").value;
+    if (jokeText.trim()) {
+        dialog.close();
+    } else {
+        alert("Bitte einen Witz eingeben");
+    }
+    console.log(category)
+    console.log(jokeText)
+    let NutzerWitz ={
+  "joke": jokeText,
+  "categories": [
+    category,
+  ],
+  "language": "de"
+}
+console.log(NutzerWitz)
+
+    try {
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        const targetUrl = 'https://witzapi.de/api/joke/';
+        const url1 = `${proxyUrl}${targetUrl}`;
+        
+        const response1 = await fetch(url1, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(NutzerWitz)
+        });
+        if (!response1.ok) {
+    
+    throw new Error(`API antwortete mit Fehler: ${response1.statusText}`);
+}
+
+        const textResponse = await response1.text();
+        console.log("Raw Response:", textResponse);
+        
+        
+        let result;
+        try {
+            result = JSON.parse(textResponse);
+        } catch (e) {
+            console.error('Fehler beim Parsen der Antwort:', e);
+        }
+
+        if (result) {
+            if (result === "duplicateJoke") {
+                alert("Dieser Witz wurde bereits hinzugefügt.");
+            } else {
+                console.log('Witz wurde hinzugefügt:', result);
+            }
+        }
+    } catch (error) {
+        console.error('Fehler beim Hinzufügen des Witzes:', error);
+    }
+});
+    
+
+
+        let Favoriten = JSON.parse(localStorage.getItem("Favoriten")) || [];
+        const Fav = document.getElementById("Fav");
+        const dia = document.getElementById("close-dia");
+
+        Fav.addEventListener("click", () => {
+            const Favorit = witztext;
+            const Favoritending = Favoriten.indexOf(Favorit);
+           
+            
+
+            if (Favoritending === -1) {
+                Favoriten.push(Favorit);
+                bild.src = "22672.png";
+            }  
+            else {
+                Favoriten.splice(Favoritending, 1);
+                bild.src = "2267.png";
+            }
+
+
+
+            localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+    updateFavoritesDisplay();
+        });
+        function updateFavoritesDisplay() {
+            Favoinhalt.innerHTML = Favoriten.join("<br><br>");
+            }
+
+        const Favo = document.getElementById("Favo");
+        const FavoButton = document.getElementById("Favoriten");
+
+        FavoButton.addEventListener("click", () => {
+            Favo.showModal();
+        });
+
+        dia.addEventListener("click", () => {
+            Favo.close();
+        });
+
+        Favoinhalt.innerHTML = Favoriten.join("<br><br>");
+        const deleteknopf=document.getElementById("delete")
+        deleteknopf.addEventListener("click", ()=> {
+            Favoriten= [];
+            localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+            updateFavoritesDisplay();
+
+        })
+       
+
+
+
+
+
+
+    </script>
+</html>
