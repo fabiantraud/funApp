@@ -133,7 +133,7 @@ dialog {
 
 .dialog-close {
     text-align: center;
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 13px;
     cursor: pointer;
@@ -233,7 +233,7 @@ dialog {
 }
 
 .Test10 {
-    width: 900px;
+    width: 925px;
     height: 550px;
     border-radius: 10px;
     background-color: white;
@@ -245,20 +245,36 @@ dialog {
     z-index: 2000;
     box-shadow:3px 3px 10px rgb(0, 0, 0);
 }
-
+.dia-close, .delete {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    }
 .dia-close {
     text-align: center;
     position: fixed;
-    top: 20px;
-    right: 13px;
     cursor: pointer;
-    font-size: 40px;
-    font-family: "Winky Sans", sans-serif;
-    border: 3px solid black;
-    box-shadow: 0 4px rgb(0, 0, 0);
     border-radius: 15px;
-    width: 40px;
+    box-shadow: 0 7px rgb(0, 0, 0);
+    border: 3px solid black;
+    font-size: 38px;
+    font-family: "Winky Sans", sans-serif;
+    max-width: 50px;
+    max-height: 50px;
+    width: 50px;
+    height: 50px;
+    z-index: 10000px;
+    left: 875px;
+    top: 20px;
 }
+.dia-close img {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
 
 .dia-close:active {
     top: 23px;
@@ -269,18 +285,24 @@ dialog {
     position: absolute;
     text-align: center;
     font-family: "Winky Sans", sans-serif;
-    top: 10px;
+    top: 50px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2000;
+    font-weight: bold;
+    font-size:  45px;
 }
 
 .Favoinhalt {
     position: absolute;
-    top: 12%;
+    top: 20%;
     font-family: "Winky Sans", sans-serif;
     font-size: 20px;
-    max-width: 780px;
+    max-width: 900px;
+    line-height: 1.5;
+    display: flex; 
+    flex-direction: column;
+    gap: 12px;    
 }
 
 .delete {
@@ -360,10 +382,47 @@ dialog {
     height: 100%;
     width: 100%;
 }
-#flex {
-    display: flex; 
-    justify-content: space-around;
+
+.dividerding {
+    border-top: 1px solid  #888888;
+    margin: 6px 0;
+  
+} /*
+.favorite-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.joke-text {
+    flex-grow: 1;
+    max-width: 780px;
+    word-wrap: break-word;
+    margin-right: 10px;
+    white-space: normal;
+}
+
+.delete-fav {
+    left: 860px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 7px rgb(0, 0, 0);
+    border: 3px solid black;
+    background-color: rgb(221, 121, 121);
+    height: 40px;
+    width: 40px;
+    z-index: 10000;
+    position: absolute;
+    display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.delete-fav img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+} */
 
 
 
@@ -382,8 +441,9 @@ dialog {
         <button class="Favoriten" id="Favoriten">Favoriten</button>
         <dialog id="Favo" class="Test10">
             <button class="delete" id="delete"><img src="542724.png"></button>
-            <span class="dia-close" id="close-dia">X</span>
-            <h1 class="Überschrift">Favoriten</h1>
+            <span class="dia-close" id="close-dia"><img src="thin-letter-x-black-png-7.png"></span>
+            <div class="Überschrift">Favoriten</div>
+           
             <br>
             <div class="Favoinhalt" id="Favoinhalt">Test</div>
         </dialog>
@@ -392,8 +452,7 @@ dialog {
         <dialog id="dialog">
             <span class="dialog-close" id="close-dialog">X</span>
             <div class="dialog-content">
-                 <button class="tes"><img src="2033152_eb.png" id="tes"></button>
-                <button class="te"><img src="coming_soon.png"></button> 
+              
                 <label for="category" class="Katege">Kategorie:</label>
                 <select id="category">
                     <option value="flachwitze">Flachwitze</option>
@@ -408,7 +467,7 @@ dialog {
             </div>
         </dialog>
         <button class="Hinzu" id="Hinzu" id="flex">Witz hinzufügen</button>
-        <a href="TestTest.html" class="TestG">testhgghvmvg</a>
+        <!--  <a href="TestTest.html" class="TestG">testhgghvmvg</a> -->
         <div id="div1" class="Witze-Div">
             Drücken auf eigene Gefahr!
         </div>
@@ -508,8 +567,8 @@ async function filterCategories() {
     if (filteredCategories.length > 0) {
         const category = filteredCategories[currentCategoryIndex];
         let formattedCategory = formatCategoryName(category);
-        Kates.innerHTML = formattedCategory; // Button-Text direkt setzen
-        changeBackgroundColor(category); // Hintergrundfarbe direkt ändern
+        Kates.innerHTML = formattedCategory; 
+        changeBackgroundColor(category); 
     }
 }
 
@@ -697,7 +756,7 @@ console.log(NutzerWitz)
     updateFavoritesDisplay();
         });
         function updateFavoritesDisplay() {
-            Favoinhalt.innerHTML = Favoriten.join("<br><br>");
+            Favoinhalt.innerHTML = Favoriten.join("<br><hr class=dividerding>");
             }
 
         const Favo = document.getElementById("Favo");
@@ -710,16 +769,48 @@ console.log(NutzerWitz)
         dia.addEventListener("click", () => {
             Favo.close();
         });
+        function updateFavoritesDisplay() {
+            if (Favoriten.length > 1) {
+        Favoinhalt.innerHTML = Favoriten.join("<br><hr class=dividerding>");
+    } else {
+        Favoinhalt.innerHTML = Favoriten.join("<br>");
+    }
+}
+   /*     function updateFavoritesDisplay() {
+    Favoinhalt.innerHTML = Favoriten.map((joke, index) => {
+        return `
+            <div class="favorite-item">
+                <span class="joke-text">${joke}</span>
+                <button class="delete-fav" data-index="${index}"><img src="542724.png"></button>
+            </div>
+            <hr class="dividerding">
+        `;
+    }).join("");
 
-        Favoinhalt.innerHTML = Favoriten.join("<br><br>");
-        const deleteknopf=document.getElementById("delete")
-        deleteknopf.addEventListener("click", ()=> {
-            Favoriten= [];
-            localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
-            updateFavoritesDisplay();
+    const deleteButtons = document.querySelectorAll('.delete-fav');
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            const index = e.target.getAttribute("data-index");
+            removeFavorite(index);
+        });
+    });
+}
 
-        })
-       
+function removeFavorite(index) {
+    Favoriten.splice(index, 1);
+    localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+    updateFavoritesDisplay();
+} */
+
+const deleteknopf = document.getElementById("delete");
+deleteknopf.addEventListener("click", () => {
+    Favoriten = [];
+    localStorage.setItem("Favoriten", JSON.stringify(Favoriten));
+    updateFavoritesDisplay();
+});
+
+updateFavoritesDisplay(); 
+
 
 
 
