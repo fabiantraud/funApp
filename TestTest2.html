@@ -8,6 +8,7 @@
             font-family: "Delius", "Winky Sans", sans-serif;
         }
         table {
+           
             border-collapse: collapse;
             width: 50%;
             text-align: center;
@@ -22,6 +23,8 @@
             padding: 10px;
             border: 1px solid #3f3f3f;
         }
+       
+        
         th {
             background-color: #f2f2f2;
             font-size: 34px;
@@ -29,6 +32,7 @@
         tbody {
             font-size: 15;
         }
+        
         .Überschrift {
             font-size: 55px;
             left: 40px;
@@ -51,6 +55,54 @@
         }
         .addButton:hover {
             background-color: rgb(177, 238, 108);
+        }
+        .deletetask {
+            cursor: pointer;
+            height: 37px ;
+            width: 37px;
+            text-align: center;
+            vertical-align: middle;
+            float: left;
+            background-color: rgb(253, 96, 85);
+            border:2px solid black;
+            border-radius: 15px;
+            font-size: 28px ;
+            box-shadow:0 2px rgb(0, 0, 0, 0.1);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .deletetask img {
+            object-fit: contain;
+    height: 100%;
+    width: 100%;
+        }
+        .deletetask:hover {
+            background-color: rgb(226, 65, 65);
+        }
+        .deleteall {
+            cursor: pointer;
+            height: 37px ;
+            width: 37px;
+            text-align: center;
+            vertical-align: middle;
+            float: right;
+            background-color: rgb(253, 96, 85);
+            border:2px solid black;
+            border-radius: 15px;
+            font-size: 28px ;
+            box-shadow:0 2px rgb(0, 0, 0, 0.1);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .deleteall img {
+            object-fit: contain;
+    height: 100%;
+    width: 100%;
+        }
+        .deleteall:hover {
+            background-color: rgb(226, 65, 65);
         }
         .add-dialog {
             width: 80vw;
@@ -102,9 +154,13 @@
             border: 3;
             cursor: pointer;
             border-radius: 5px;
+            box-shadow:2px 4px rgb(0, 0, 0,0.1);
         }
         .add-dialog-content button:hover {
-            background-color: #cacaca;
+            background-color: #d6d6d6;
+        }
+        .add-dialog-content button:active {
+            top:71% ;
         }
         .Unwichtig {
             font-family: "Delius", "Winky Sans", sans-serif;
@@ -148,9 +204,7 @@
         .doneButton:hover {
             background-color: rgb(177, 238, 108);
         }
-        .doneButton:active {
-            
-        }
+       
     </style>
     <title>Witze</title>
     <link rel="icon" type="image/png" href="logo1.png" />
@@ -179,12 +233,16 @@
     <table>
         <thead>
             <tr>
-                <th>Offen <button class="addButton" id="addButton">+</button></th>
-                <th>Erledigt</th>
+                <th><button class="deletetask" id="deletetask"><img src="542724.png"></button>Offen<button class="addButton" id="addButton">+</button></th>
+                <th>Erledigt <button class="deleteall" id="deleteall"><img src="542724.png"></button></th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
+        <tbody id="openTasks"></tbody>
+        <tbody id="doneTasks"></tbody>
+          
+       
+            
+    
     </table>
 </body>
 <script>
@@ -198,9 +256,10 @@
     let taskTextContainer;
     let taskCellContainer;
     let doneCell;
-    let Test1
-    let Test2
-    const tasks= [];
+    let Test1;
+    let Test2;
+    const deleteall= document.getElementById ("deleteall");
+    const deletetask= document.getElementById ("deletetask");
 
     addButton.addEventListener("click", () => {
         adddialog.showModal();
@@ -222,6 +281,8 @@
             taskTextContainer = document.createElement("div");
             taskCellContainer = document.createElement("div");
             doneCell = document.createElement("td");
+            let doneTextContainer = document.createElement("div");
+            let doneCellContainer = document.createElement("div");
 
             taskCell.classList.add(importance);
             taskCell.style.display = "flex";
@@ -236,35 +297,86 @@
             taskTextContainer.style.whiteSpace = "normal";
             taskTextContainer.textContent = task;
 
-            taskButton = document.createElement("button");
-            taskButton.innerHTML ="<img src='66831.png'>" ;
-            taskButton.classList.add("doneButton");
-
+           
             taskCellContainer.style.display = "flex";
             taskCellContainer.style.width = "100%";
             taskCellContainer.style.justifyContent = "space-between";
+            
 
+
+            
+
+            taskButton = document.createElement("button");
+            taskButton.innerHTML ="<img src='66831.png'>" ;
+            taskButton.classList.add("doneButton");
+           
             taskCellContainer.appendChild(taskTextContainer);
             taskCellContainer.appendChild(taskButton);
 
             taskCell.appendChild(taskCellContainer);
             newRow.appendChild(taskCell);
+            let Test4=newRow
             console.log(newRow)
-        
-          
-          
+
            
-            tbody.appendChild(newRow); 
+            
+        let openTasks = document.getElementById("openTasks")
+        let doneTasks = document.getElementById("doneTasks")
+           openTasks.appendChild (newRow);
+           /* tbody.appendChild(newRow); */
+            taskButton.addEventListener("click", () => {
+                
+           doneCell.classList.add(importance);
+         
+
+            doneTextContainer.style.flex = "1";
+            doneTextContainer.style.textAlign = "left";
+            doneTextContainer.style.wordWrap = "break-word";
+            doneTextContainer.style.whiteSpace = "normal";
+          
+
+           
+            doneCellContainer.style.display = "flex";
+            doneCellContainer.style.width = "100%";
+            doneCellContainer.style.justifyContent = "space-between";
+                doneCellContainer.appendChild(doneTextContainer);
+                doneCellContainer.appendChild(taskButton);
+                console.log(doneCellContainer+"Test1")
+                console.log(taskCellContainer+"Test2")
+                doneCell.appendChild(taskCellContainer);
+                newRow.appendChild(doneCell);
+                document.getElementById("doneTasks").appendChild(newRow);
+                taskCell.style.opacity="0%";
+                
+               /* doneTasks.appendChild(newRow);*/
+                console.log("Test")
+                console.log(newRow)
+                
+           
+        });
         } else {
             alert("Bitte etwas eingeben");
         }
+       
+        
+
+    });
+    deleteall.addEventListener("click", () => {
+    const doneTasks = document.getElementById("doneTasks");
+    if (doneTasks) {
+        doneTasks.innerHTML = '';
+    }
+    });
+    deletetask.addEventListener("click", ()=> {
+    const openTasks= document.getElementById("openTasks");
+    if (openTasks) {
+        openTasks.innerHTML = "";
+    }    
     });
 
-    taskButton.addEventListener("click", () => {
-         console.log("Test")
         
-       
-    });
+        
+   
 
 </script>
 </html>
